@@ -110,7 +110,6 @@ window.addEventListener("DOMContentLoaded", function () {
             }
         } else {
             if(validationCompleted){
-                console.log("completado")
                 finishCompleted = true
                 finish_HTML.textContent = "LAUNCH COMPLETED!"
                 finish_HTML.classList.add("finishAnimation")
@@ -120,9 +119,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 }, 3000)
                 validationCompleted = false
             }else{
-                console.log(dateGlobal,memoryDateGlobal)
                 if(dateGlobal === null){
-                    console.log("repite",new Date(dateGlobal)) /*  */
                     finish_HTML.textContent = "You must enter a time later than your current time"
                     finish_HTML.classList.add("finishAnimation")
                     setTimeout(function () {
@@ -150,7 +147,6 @@ window.addEventListener("DOMContentLoaded", function () {
             finishCompleted = false
             dateGlobal = 0
             memoryDateGlobal = null
-            console.log(finishCompleted)
         }
     }
 
@@ -169,7 +165,6 @@ window.addEventListener("DOMContentLoaded", function () {
             let launchingDate = new Date(`${date_HTML}T${hours_HTML}:${minutes_HTML}:00`);
             dateGlobal = launchingDate.getTime()
             clickState = true
-            console.log(memoryDateGlobal, dateGlobal)
             if (isNaN(dateGlobal)) {
                 console.log("Por favor registre una fecha")
                 finish_HTML.textContent = "You must enter a date"
@@ -182,7 +177,6 @@ window.addEventListener("DOMContentLoaded", function () {
                 clickState = false
             } else if (dateGlobal != memoryDateGlobal) {
                 dateGlobal = memoryDateGlobal
-                console.log(memoryDateGlobal, dateGlobal)
                 console.log("realizar pregunta modal")
                 launching_HTML.insertAdjacentHTML("afterbegin", changeModal)
 
@@ -200,7 +194,6 @@ window.addEventListener("DOMContentLoaded", function () {
                 })
                 clickState = false
             } else {
-                console.log(memoryDateGlobal, dateGlobal)
                 clickState = false
 
             }
