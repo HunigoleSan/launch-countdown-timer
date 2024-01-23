@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Red Hat Text', sans-serif;
+}
+html{
+    font-size: 62.50%;
+}
+img{
+    display: block;
+}
+a{
+    display: block;
+    text-decoration: none;
+}
