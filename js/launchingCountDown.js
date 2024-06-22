@@ -55,14 +55,13 @@ window.addEventListener("DOMContentLoaded", function () {
                         let animationSelect = randomNumberArray()
                         countNumberHour.classList.add(animationSelect)
                         countNumberHour.textContent =String(parseInt(hours)+1).padStart(2,'0') 
-                        
                         if(currentValue.textContent == "00"){
                             countNumberHour.textContent = "00"
                         }
                         currentValue.textContent = hours
                         setTimeout(function(){
                             countDownHour.removeChild(countNumberHour)
-                        },3000)
+                        },1000)
                     }
                 } else if (numberClass == "minutes") {
                     if(currentValue.textContent != minutes ){
@@ -90,19 +89,15 @@ window.addEventListener("DOMContentLoaded", function () {
                         countNumberSecond.className = "countdown__number animationTimer"
                         let animationSelect = randomNumberArray()
                         countNumberSecond.classList.add(animationSelect)
-
                         countNumberSecond.textContent =String(parseInt(seconds)+1).padStart(2,'0') 
                         if(currentValue.textContent == "00"){
                             countNumberSecond.textContent = "00"
                         }
-
                         currentValue.textContent = seconds
                         setTimeout(function(){
                             countDownSecond.removeChild(countNumberSecond)
                         },3000)
                     }
-                } else {
-                    console.error("Error en el sistema")
                 }
             });
             if(days == "00" && hours == "00" && minutes == "00" && seconds == "00"){
@@ -126,7 +121,7 @@ window.addEventListener("DOMContentLoaded", function () {
                         finish_HTML.textContent = ""
                         finish_HTML.classList.remove("finishAnimation")
                     }, 3000)
-                    return console.log("empezo siendo nulo, la ejecucion se detiene")
+                    return console.log("empezo siendo nulo o negativo, la ejecucion se detiene")
                 }else{
                     finish_HTML.textContent = "You must enter a time later than your current time"
                     finish_HTML.classList.add("finishAnimation")
@@ -136,7 +131,6 @@ window.addEventListener("DOMContentLoaded", function () {
                     }, 3000)
                 }
                 dateGlobal = memoryDateGlobal
-                console.log(dateGlobal)
             }
         }
         memoryDateGlobal = dateGlobal
@@ -166,7 +160,6 @@ window.addEventListener("DOMContentLoaded", function () {
             dateGlobal = launchingDate.getTime()
             clickState = true
             if (isNaN(dateGlobal)) {
-                console.log("Por favor registre una fecha")
                 finish_HTML.textContent = "You must enter a date"
                 statesFunctions.emptyDate(finish_HTML, function (state) {
                     clickState = state
@@ -177,16 +170,12 @@ window.addEventListener("DOMContentLoaded", function () {
                 clickState = false
             } else if (dateGlobal != memoryDateGlobal) {
                 dateGlobal = memoryDateGlobal
-                console.log("realizar pregunta modal")
                 launching_HTML.insertAdjacentHTML("afterbegin", changeModal)
-
                 let changeModalCard = document.getElementById("changeModal")
                 let changeModalYes = document.getElementById("changeModalYes")
                 let changeModalNo = document.getElementById("changeModalNo")
-
                 changeModalYes.addEventListener("click", function () {
                     launching_HTML.removeChild(changeModalCard)
-                    console.log("fecha cambiado")
                     dateGlobal = launchingDate.getTime()
                 })
                 changeModalNo.addEventListener("click", function () {
@@ -195,7 +184,6 @@ window.addEventListener("DOMContentLoaded", function () {
                 clickState = false
             } else {
                 clickState = false
-
             }
         } else {
             console.log("Por favor espere a que finalice el tiempo de espera")
